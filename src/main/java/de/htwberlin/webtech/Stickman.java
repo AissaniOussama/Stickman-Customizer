@@ -8,6 +8,7 @@ public class Stickman {
     public Stickman(String name, String hat) {
         this.name = name;
         this.hat = hat;
+
     }
 
     public String getName() {
