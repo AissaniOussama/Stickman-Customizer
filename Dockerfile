@@ -11,5 +11,5 @@ LABEL org.name="AissaniOussama"
 # Package stage
 #
 FROM eclipse-temurin:21-jdk-jammy
-COPY --from=build C:/Users/aissa/Desktop/Studium/WebTechRepo/webtech.jar app.jar
+COPY --from=build /home/gradle/src/build/libs/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
