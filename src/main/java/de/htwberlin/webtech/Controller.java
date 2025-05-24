@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class Controller {
 
-    @GetMapping("/Stickman")
+    @GetMapping("/stickman")
     public List<Stickman> LogInDataRouteTest() {
         return List.of(
                 new Stickman("Stickman1", "SwagKeys for the Attributes"),
@@ -18,10 +19,8 @@ public class Controller {
         );
     }
 
-
-    @GetMapping("/Stickmans")
+    @GetMapping("/stickmans")
     public List<Stickman> getAllThings() {
         return LogInDataRouteTest();
-
     }
 }
