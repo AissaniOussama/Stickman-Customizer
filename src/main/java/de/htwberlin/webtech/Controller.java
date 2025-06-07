@@ -1,8 +1,6 @@
 package de.htwberlin.webtech;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,27 +9,16 @@ import java.util.List;
 @RequestMapping("/api")
 public class Controller {
 
-    private static final Logger logger = LoggerFactory.getLogger(Controller.class);
+    @Autowired
+    private StickmanService service;
 
-    @GetMapping(value = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String test() {
-        logger.info("Test endpoint called");
-        return "{\"message\": \"API is working!\"}";
+    @PostMapping("/stickmans")
+    public Stickman create(@RequestBody Stickman stickman) {
+        return service.save(stickman);
     }
 
-    @GetMapping(value = "/stickman", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Stickman> LogInDataRouteTest() {
-        logger.info("Stickman endpoint called");
-        return List.of(
-                new Stickman("Stickman1", "SwagKeys for the Attributes"),
-                new Stickman("Stickman2", "SwagKeys for the Attributes"),
-                new Stickman("Stickman3", "SwagKeys for the Attributes")
-        );
-    }
-
-    @GetMapping(value = "/stickmans", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Stickman> getAllThings() {
-        logger.info("Stickmans endpoint called");
-        return LogInDataRouteTest();
+    @GetMapping("/stickmans")
+    public List<Stickman> getAll() {
+        return service.getAll();
     }
 }
