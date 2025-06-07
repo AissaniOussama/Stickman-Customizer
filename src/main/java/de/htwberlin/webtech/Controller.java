@@ -12,11 +12,12 @@ public class Controller {
     @Autowired
     private StickmanService service;
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/stickmans")
     public Stickman create(@RequestBody Stickman stickman) {
+        System.out.println("POST erhalten: " + stickman);
         return service.save(stickman);
     }
-
     @GetMapping("/stickmans")
     public List<Stickman> getAll() {
         return service.getAll();
