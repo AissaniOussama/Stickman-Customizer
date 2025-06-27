@@ -22,4 +22,12 @@ public class Controller {
     public List<Stickman> getAll() {
         return service.getAll();
     }
+
+    @GetMapping("/stickmans/{id}")
+    public Stickman getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
+
+
 }

@@ -22,4 +22,11 @@ public class StickmanService {
                 .stream(repo.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+
+    public Stickman getById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
 }
+
+
