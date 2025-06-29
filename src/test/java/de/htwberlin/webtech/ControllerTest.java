@@ -24,6 +24,7 @@ public class ControllerTest {
     public void testGetStickmanById() throws Exception {
         Stickman s1 = new Stickman("Mr.Cool", "Hat1", "Top1", "Bot1");
         s1.setId(1L);
+        s1.setOwner("Owner1"); // Hinzugefügt
 
         when(service.getById(1L)).thenReturn(s1);
 
@@ -33,7 +34,8 @@ public class ControllerTest {
               "name":"Mr.Cool",
               "hat":"Hat1",
               "top":"Top1",
-              "bot":"Bot1"
+              "bot":"Bot1",
+              "owner":"Owner1" // Hinzugefügt
             }
             """;
 

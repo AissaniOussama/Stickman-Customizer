@@ -13,19 +13,16 @@ class ToStringTest {
         String hat = "Hat1";
         String top = "Top1";
         String bot = "Bot1";
+        String owner = "Owner1"; // Hinzugefügt
 
-        //"System under test" aufsetzen
         Stickman stickman = new Stickman(name, hat, top, bot);
+        stickman.setOwner(owner); // Hinzugefügt
         stickman.setId(33L);
 
-        //Erwartetes Ergebnis
-        String expected = "Stickman{id=33, name='Stickman', hat='Hat1', top='Top1', bot='Bot1'}";
+        String expected = "Stickman{id=33, name='Stickman', hat='Hat1', top='Top1', bot='Bot1', owner='Owner1'}"; // Hinzugefügt
 
-        //Tatsächliches Ergebnis
         String actual = stickman.toString();
 
-        //Vergleich
         assertEquals(expected, actual);
     }
 }
-

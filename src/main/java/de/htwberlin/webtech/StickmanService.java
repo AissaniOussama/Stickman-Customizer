@@ -23,10 +23,11 @@ public class StickmanService {
                 .collect(Collectors.toList());
     }
 
-
     public Stickman getById(Long id) {
         return repo.findById(id).orElse(null);
     }
+
+    public List<Stickman> getByOwner(String owner) { // NEU
+        return repo.findByOwner(owner);
+    }
 }
-
-

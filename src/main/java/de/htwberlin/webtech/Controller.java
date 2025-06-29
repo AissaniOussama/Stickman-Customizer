@@ -18,6 +18,7 @@ public class Controller {
         System.out.println("POST erhalten: " + stickman);
         return service.save(stickman);
     }
+
     @GetMapping("/stickmans")
     public List<Stickman> getAll() {
         return service.getAll();
@@ -28,6 +29,8 @@ public class Controller {
         return service.getById(id);
     }
 
-
-
+    @GetMapping("/stickmans/owner/{owner}") // NEU
+    public List<Stickman> getByOwner(@PathVariable String owner) {
+        return service.getByOwner(owner);
+    }
 }

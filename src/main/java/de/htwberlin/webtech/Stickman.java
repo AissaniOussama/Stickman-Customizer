@@ -13,6 +13,7 @@ public class Stickman {
     private String hat;
     private String top;
     private String bot;
+    private String owner;
 
     public Stickman() {}
 
@@ -28,12 +29,18 @@ public class Stickman {
     public String getHat() { return hat; }
     public String getTop() { return top; }
     public String getBot() { return bot; }
-
+    public String getOwner() {
+        return owner;
+    }
     public void setId(Long id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setHat(String hat) { this.hat = hat; }
     public void setTop(String top) { this.top = top; }
     public void setBot(String bot) { this.bot = bot; }
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
 
     @Override
     public String toString() {
@@ -43,6 +50,8 @@ public class Stickman {
                 ", hat='" + hat + '\'' +
                 ", top='" + top + '\'' +
                 ", bot='" + bot + '\'' +
+                ", owner='" + owner + '\'' +
                 '}';
     }
+
 }
