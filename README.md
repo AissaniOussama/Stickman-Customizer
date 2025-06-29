@@ -20,7 +20,7 @@ Speichern und Filtern: Speichere deine Stickmänner und filtere sie später nach
 Nutzung der App:
 App starten:
 
-Öffne die App im Browser unter http://localhost:3000.
+Öffne die App im Browser unter https://frontendstickman.onrender.com.
 
 Stickman erstellen:
 
