@@ -5,9 +5,42 @@ Mitglieder
 Oussama Aissani
 Luca Fritzsching
 
-Stickman customization App
+Projektbeschreibung
+Die Stickman Customization App ermöglicht es den Benutzern, ihren eigenen Stickman zu erstellen und zu personalisieren. Du kannst verschiedene Outfits (Hüte, Oberteile, Hosen & Schuhe) auswählen, einen Namen und einen Besitzer vergeben. Nach dem Erstellen kannst du deinen Stickman speichern und ihn später anzeigen lassen. Zudem gibt es eine Filteroption, um Stickmänner nach dem Besitzer zu suchen.
 
-Man kann einen Stickman mit verschiedenen Klamotten/Attribute erstellen 
-ggf. Account erstellen
-Stickman Hüte auswählen
-Stickman Hosen auswählen
+Features:
+Personalisierung: Wähle Accessoires für deinen Stickman (Hut, Oberteil, Unterteil).
+
+Name und Besitzer: Vergib einen Namen und einen Besitzer für deinen Stickman.
+
+Random Name: Klicke auf einen Button, um einen zufälligen Namen zu generieren.
+
+Speichern und Filtern: Speichere deine Stickmänner und filtere sie später nach dem Besitzer.
+
+Nutzung der App:
+App starten:
+
+Öffne die App im Browser unter http://localhost:3000.
+
+Stickman erstellen:
+
+Vergib einen Namen für deinen Stickman.
+
+Wähle Accessoires aus:
+
+Hut: Wähle aus verschiedenen Hüten.
+
+Oberteil: Entscheide dich für ein passendes Oberteil.
+
+Unterteil: Wähle Hosen oder Schuhe aus.
+
+Du kannst auch den "Random Name"-Button verwenden, um einen zufälligen Namen für deinen Stickman zu generieren.
+
+Stickman speichern:
+
+Sobald dein Stickman erstellt ist, kannst du ihn speichern. Der Stickman erhält automatisch den Namen und den Besitzer, den du angegeben hast.
+
+Stickman anzeigen und filtern:
+
+Du kannst alle gespeicherten Stickmänner anzeigen und nach Besitzer filtern, um einen bestimmten Stickman zu finden.
+
