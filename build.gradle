@@ -7,22 +7,35 @@ plugins {
 group = 'de.htwberlin'
 version = '0.0.1-SNAPSHOT'
 
-
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-		implementation 'org.springframework.boot:spring-boot-starter-web'
-		developmentOnly 'org.springframework.boot:spring-boot-devtools'
-		runtimeOnly 'com.h2database:h2'
-		runtimeOnly 'org.postgresql:postgresql'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	}
-	test {
-		useJUnitPlatform()
-	}
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// DB Treiber – nimm entweder H2 (lokal) ODER Postgres (Prod)
+	runtimeOnly 'org.postgresql:postgresql:42.7.3'
+	// runtimeOnly 'com.h2database:h2' // nur falls du lokal H2 verwendest
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+// (optional) stelle sicher, dass das Projekt mit Gradle 8.x baut:
+tasks.wrapper {
+	gradleVersion = '8.5'
+	distributionType = Wrapper.DistributionType.ALL
 }
