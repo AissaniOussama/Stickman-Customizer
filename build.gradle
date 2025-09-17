@@ -23,9 +23,7 @@ dependencies {
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-	// DB Treiber – nimm entweder H2 (lokal) ODER Postgres (Prod)
 	runtimeOnly 'org.postgresql:postgresql:42.7.3'
-	// runtimeOnly 'com.h2database:h2' // nur falls du lokal H2 verwendest
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -34,7 +32,6 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-// (optional) stelle sicher, dass das Projekt mit Gradle 8.x baut:
 tasks.wrapper {
 	gradleVersion = '8.5'
 	distributionType = Wrapper.DistributionType.ALL

@@ -2,6 +2,10 @@ package de.htwberlin.webtech;
 
 import jakarta.persistence.*;
 
+
+/*
+This Class defines the customizable Stickman as Objects. aka their necessary Attributes and Methods.
+ */
 @Entity
 public class Stickman {
 
@@ -24,24 +28,23 @@ public class Stickman {
         this.bot = bot;
     }
 
-    public Long getId() { return id; }
+
     public String getName() { return name; }
     public String getHat() { return hat; }
     public String getTop() { return top; }
     public String getBot() { return bot; }
-    public String getOwner() {
-        return owner;
-    }
-    public void setId(Long id) { this.id = id; }
+    public String getOwner() { return owner; }
+    public Long getId() { return id; }
     public void setName(String name) { this.name = name; }
     public void setHat(String hat) { this.hat = hat; }
     public void setTop(String top) { this.top = top; }
     public void setBot(String bot) { this.bot = bot; }
+    public void setId(Long id) { this.id = id; }
     public void setOwner(String owner) {
         this.owner = owner;
     }
 
-
+    //JSON format
     @Override
     public String toString() {
         return "Stickman{" +
