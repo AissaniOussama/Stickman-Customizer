@@ -49,7 +49,7 @@ Im Homescreen kannst du zu "SHOW" navigieren. Hier kannst alle gespeicherten Sti
 
 
 
-ENGLISH - 
+ENGLISH ---------------------------------------------------------------------------------------------
 
 The Stickman Customization Application enables Users to create and personalize their own Stickman.
 It's possible to select various Outfits (Hats, Tops, Pants & Shoes), give a name to your Stickman and define a owner. After creating, you can export him as a PNG or save him and come back to him at some other time. Which you can do by 
