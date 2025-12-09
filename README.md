@@ -19,7 +19,7 @@ Nutzung der App:
 
 App starten:
 
-Starte das Backend über https://webtechrepo.onrender.com (fährt durch Inaktivität herunter - hochfahren dauert ca. 1-2 Minuten). 
+((redundant aktuell offline)) Starte das Backend über https://webtechrepo.onrender.com (fährt durch Inaktivität herunter - hochfahren dauert ca. 1-2 Minuten). 
 
 Öffne die Anwendung im Browser unter https://frontendstickman.onrender.com.
 
@@ -71,7 +71,7 @@ Using the App:
 
 Start the App:
 
-Start the backend via https://webtechrepo.onrender.com (it goes idle after inactivity – startup takes about 1-2 minutes).
+((redundant currently down)) Start the backend via https://webtechrepo.onrender.com (it goes idle after inactivity – startup takes about 1-2 minutes).
 
 Open the application in the browser at https://frontendstickman.onrender.com
 
