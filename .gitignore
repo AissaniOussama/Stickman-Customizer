@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+.neon
+node_modules/
+.env.local

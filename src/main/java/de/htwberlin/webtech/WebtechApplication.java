@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WebtechApplication {
 
 	public static void main(String[] args) {
+		NeonDatabaseUrl.apply(System.getenv());
 		SpringApplication.run(WebtechApplication.class, args);
 	}
 

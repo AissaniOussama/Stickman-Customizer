@@ -19,8 +19,6 @@ Nutzung der App:
 
 App starten:
 
-((redundant aktuell offline)) Starte das Backend über https://webtechrepo.onrender.com (fährt durch Inaktivität herunter - hochfahren dauert ca. 1-2 Minuten). 
-
 Öffne die Anwendung im Browser unter https://frontendstickman.onrender.com.
 
 Stickman erstellen:
@@ -71,8 +69,6 @@ Using the App:
 
 Start the App:
 
-((redundant currently down)) Start the backend via https://webtechrepo.onrender.com (it goes idle after inactivity – startup takes about 1-2 minutes).
-
 Open the application in the browser at https://frontendstickman.onrender.com
 
 Create a Stickman:
@@ -96,3 +92,24 @@ Once your stickman is created, you can save it. The stickman will automatically 
 Display and Filter Stickmen:
 
 On the home screen, you can navigate to "SHOW". Here you can view all saved stickmen and filter them by owner to find a specific one.
+
+
+
+BACKEND & DATENBANK (Neon) ----------------------------------------------------------------------------
+
+Backend und Datenbank laufen beide kostenlos bei Neon. Kein manuelles Hochfahren mehr: das Backend wacht beim
+ersten Aufruf in Sekundenbruchteilen auf.
+
+- Backend: Neon Function `stickman` (`functions/stickman/index.ts`, TypeScript + Hono + node-postgres)
+  URL: https://br-twilight-base-bdscf6vp-stickman.compute.c-8.us-east-2.aws.neon.tech
+  Endpunkte: `GET/POST /api/stickmans`, `GET /api/stickmans/{id}`, `GET /api/stickmans/owner/{owner}`
+- Datenbank: Neon Postgres (Branch `production`), Tabelle `stickman` wird automatisch angelegt.
+- Konfiguration: `neon.ts`. Deployen mit:
+
+  ```
+  npm install
+  neon deploy --env .env.local
+  ```
+
+Das ursprüngliche Spring-Boot-Backend (`src/`, Java) ist noch im Repo (Webtech-Abgabe), wird aber nicht mehr
+gehostet. Es läuft weiterhin lokal mit `DATABASE_URL_UNPOOLED` (Neon-URL) oder den `JDBC_DATABASE_*`-Variablen.
