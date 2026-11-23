@@ -19,8 +19,6 @@ Nutzung der App:
 
 App starten:
 
-Starte das Backend über https://webtechrepo.onrender.com (fährt durch Inaktivität herunter - hochfahren dauert ca. 1-2 Minuten). 
-
 Öffne die Anwendung im Browser unter https://frontendstickman.onrender.com.
 
 Stickman erstellen:
@@ -71,8 +69,6 @@ Using the App:
 
 Start the App:
 
-Start the backend via https://webtechrepo.onrender.com (it goes idle after inactivity – startup takes about 1-2 minutes).
-
 Open the application in the browser at https://frontendstickman.onrender.com
 
 Create a Stickman:
@@ -99,22 +95,21 @@ On the home screen, you can navigate to "SHOW". Here you can view all saved stic
 
 
 
-DATENBANK (Neon, kostenlos & dauerhaft) ---------------------------------------------------------------
+BACKEND & DATENBANK (Neon) ----------------------------------------------------------------------------
 
-Die kostenlose Render-Postgres wird nach 30 Tagen gelöscht. Deshalb läuft die Datenbank bei Neon (Free Tier,
-läuft nicht ab, 0,5 GB). Die Tabellen legt Spring automatisch an (`ddl-auto=update`).
+Backend und Datenbank laufen beide kostenlos bei Neon. Kein manuelles Hochfahren mehr: das Backend wacht beim
+ersten Aufruf in Sekundenbruchteilen auf.
 
-Render (Backend-Service) -> "Environment" -> eine Variable setzen:
+- Backend: Neon Function `stickman` (`functions/stickman/index.ts`, TypeScript + Hono + node-postgres)
+  URL: https://br-twilight-base-bdscf6vp-stickman.compute.c-8.us-east-2.aws.neon.tech
+  Endpunkte: `GET/POST /api/stickmans`, `GET /api/stickmans/{id}`, `GET /api/stickmans/owner/{owner}`
+- Datenbank: Neon Postgres (Branch `production`), Tabelle `stickman` wird automatisch angelegt.
+- Konfiguration: `neon.ts`. Deployen mit:
 
-- `DATABASE_URL_UNPOOLED` = die direkte Neon-Connection-String (`postgresql://...@ep-xxx.neon.tech/neondb?sslmode=require`,
-  OHNE `-pooler` im Host). Zu finden im Neon-Dashboard unter "Connect" (Connection pooling aus) oder lokal mit `neon env pull`.
+  ```
+  npm install
+  neon deploy --env .env.local
+  ```
 
-`NeonDatabaseUrl.java` wandelt die URL beim Start in die `spring.datasource.*`-Werte um. Die direkte Verbindung wird
-genutzt, weil Spring selbst einen Pool (Hikari) hat und Schema-Updates macht. Alternativ funktionieren weiterhin die
-Variablen `JDBC_DATABASE_URL`, `JDBC_DATABASE_USERNAME`, `JDBC_DATABASE_PASSWORD`.
-
-Neon-Projekt lokal: `neon.ts` beschreibt die Neon-Konfiguration, `neon deploy` wendet sie an und schreibt die
-Zugangsdaten nach `.env.local` (wird nicht committet).
-
-Hinweis: Neon pausiert die DB nach ca. 5 Minuten ohne Anfragen und weckt sie bei der nächsten Anfrage in
-unter einer Sekunde wieder auf. Daten bleiben dabei erhalten.
+Das ursprüngliche Spring-Boot-Backend (`src/`, Java) ist noch im Repo (Webtech-Abgabe), wird aber nicht mehr
+gehostet. Es läuft weiterhin lokal mit `DATABASE_URL_UNPOOLED` (Neon-URL) oder den `JDBC_DATABASE_*`-Variablen.

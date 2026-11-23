@@ -3,6 +3,12 @@ import { defineConfig } from "@neon/config/v1";
 export default defineConfig({
   // Declare your Neon services here
   auth: false,
+  functions: {
+    stickman: {
+      name: "stickman api",
+      source: "functions/stickman/index.ts",
+    },
+  },
   // Branch policy: per-branch tuning
   branch: (branch) => {
     if (branch.isDefault) {
