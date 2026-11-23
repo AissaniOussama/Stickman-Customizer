@@ -1,3 +1,5 @@
+**Live:** App https://frontendstickman.onrender.com · Backend https://br-twilight-base-bdscf6vp-stickman.compute.c-8.us-east-2.aws.neon.tech/api/stickmans
+
 GERMAN -
 
 Die Stickman Customization Anwendung ermöglicht es den Benutzern, ihren eigenen Stickman zu erstellen und zu personalisieren.
