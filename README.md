@@ -104,18 +104,17 @@ DATENBANK (Neon, kostenlos & dauerhaft) ----------------------------------------
 Die kostenlose Render-Postgres wird nach 30 Tagen gelöscht. Deshalb läuft die Datenbank bei Neon (Free Tier,
 läuft nicht ab, 0,5 GB). Die Tabellen legt Spring automatisch an (`ddl-auto=update`).
 
-Einrichtung (einmalig):
+Render (Backend-Service) -> "Environment" -> eine Variable setzen:
 
-1. Auf https://neon.tech kostenlos registrieren und ein Projekt anlegen (Region z.B. "AWS Europe Central (Frankfurt)").
-2. Im Dashboard auf "Connect" klicken, "Connection pooling" AUS lassen (direkte Verbindung, ohne `-pooler` im Host).
-   Man bekommt etwas wie: `postgresql://neondb_owner:PASSWORT@ep-xxx.eu-central-1.aws.neon.tech/neondb?sslmode=require`
-3. Bei Render im Backend-Service (webtechrepo) unter "Environment" setzen:
-   - `JDBC_DATABASE_URL`      = `jdbc:postgresql://ep-xxx.eu-central-1.aws.neon.tech/neondb?sslmode=require`
-     (Host + Datenbank aus Schritt 2, mit `jdbc:` davor, OHNE Benutzer/Passwort in der URL)
-   - `JDBC_DATABASE_USERNAME` = `neondb_owner`
-   - `JDBC_DATABASE_PASSWORD` = das Passwort aus Schritt 2
-4. Speichern, Render deployt neu. Die alte Render-Datenbank kann gelöscht werden.
+- `DATABASE_URL_UNPOOLED` = die direkte Neon-Connection-String (`postgresql://...@ep-xxx.neon.tech/neondb?sslmode=require`,
+  OHNE `-pooler` im Host). Zu finden im Neon-Dashboard unter "Connect" (Connection pooling aus) oder lokal mit `neon env pull`.
+
+`NeonDatabaseUrl.java` wandelt die URL beim Start in die `spring.datasource.*`-Werte um. Die direkte Verbindung wird
+genutzt, weil Spring selbst einen Pool (Hikari) hat und Schema-Updates macht. Alternativ funktionieren weiterhin die
+Variablen `JDBC_DATABASE_URL`, `JDBC_DATABASE_USERNAME`, `JDBC_DATABASE_PASSWORD`.
+
+Neon-Projekt lokal: `neon.ts` beschreibt die Neon-Konfiguration, `neon deploy` wendet sie an und schreibt die
+Zugangsdaten nach `.env.local` (wird nicht committet).
 
 Hinweis: Neon pausiert die DB nach ca. 5 Minuten ohne Anfragen und weckt sie bei der nächsten Anfrage in
 unter einer Sekunde wieder auf. Daten bleiben dabei erhalten.
-
