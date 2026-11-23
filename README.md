@@ -19,7 +19,7 @@ Nutzung der App:
 
 App starten:
 
-((redundant aktuell offline)) Starte das Backend über https://webtechrepo.onrender.com (fährt durch Inaktivität herunter - hochfahren dauert ca. 1-2 Minuten). 
+Starte das Backend über https://webtechrepo.onrender.com (fährt durch Inaktivität herunter - hochfahren dauert ca. 1-2 Minuten). 
 
 Öffne die Anwendung im Browser unter https://frontendstickman.onrender.com.
 
@@ -71,7 +71,7 @@ Using the App:
 
 Start the App:
 
-((redundant currently down)) Start the backend via https://webtechrepo.onrender.com (it goes idle after inactivity – startup takes about 1-2 minutes).
+Start the backend via https://webtechrepo.onrender.com (it goes idle after inactivity – startup takes about 1-2 minutes).
 
 Open the application in the browser at https://frontendstickman.onrender.com
 
@@ -96,3 +96,26 @@ Once your stickman is created, you can save it. The stickman will automatically 
 Display and Filter Stickmen:
 
 On the home screen, you can navigate to "SHOW". Here you can view all saved stickmen and filter them by owner to find a specific one.
+
+
+
+DATENBANK (Neon, kostenlos & dauerhaft) ---------------------------------------------------------------
+
+Die kostenlose Render-Postgres wird nach 30 Tagen gelöscht. Deshalb läuft die Datenbank bei Neon (Free Tier,
+läuft nicht ab, 0,5 GB). Die Tabellen legt Spring automatisch an (`ddl-auto=update`).
+
+Einrichtung (einmalig):
+
+1. Auf https://neon.tech kostenlos registrieren und ein Projekt anlegen (Region z.B. "AWS Europe Central (Frankfurt)").
+2. Im Dashboard auf "Connect" klicken, "Connection pooling" AUS lassen (direkte Verbindung, ohne `-pooler` im Host).
+   Man bekommt etwas wie: `postgresql://neondb_owner:PASSWORT@ep-xxx.eu-central-1.aws.neon.tech/neondb?sslmode=require`
+3. Bei Render im Backend-Service (webtechrepo) unter "Environment" setzen:
+   - `JDBC_DATABASE_URL`      = `jdbc:postgresql://ep-xxx.eu-central-1.aws.neon.tech/neondb?sslmode=require`
+     (Host + Datenbank aus Schritt 2, mit `jdbc:` davor, OHNE Benutzer/Passwort in der URL)
+   - `JDBC_DATABASE_USERNAME` = `neondb_owner`
+   - `JDBC_DATABASE_PASSWORD` = das Passwort aus Schritt 2
+4. Speichern, Render deployt neu. Die alte Render-Datenbank kann gelöscht werden.
+
+Hinweis: Neon pausiert die DB nach ca. 5 Minuten ohne Anfragen und weckt sie bei der nächsten Anfrage in
+unter einer Sekunde wieder auf. Daten bleiben dabei erhalten.
+
